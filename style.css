@@ -92,3 +92,13 @@ button {
   position: relative;
   top: -390px;
 }
+
+footer {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 14px;
+  width: 100%;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: black;
+}
