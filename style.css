@@ -11,11 +11,11 @@ button {
   margin: 0 auto;
   margin-top: 50px;
   width: 350px;
-  height: 375px;
+  height: 335px;
   border-radius: 50%;
-  -webkit-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.6);
-  -moz-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.6);
-  box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.6);
+  -webkit-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.7);
+  -moz-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.7);
+  box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.7);
 }
 
 .flex-content {
@@ -25,7 +25,7 @@ button {
 
 .pad {
   width: 175px;
-  height: 175px;
+  height: 155px;
   border: 10px solid #262626;
 }
 
@@ -80,17 +80,17 @@ button {
 .center-pad {
   font-family: 'Merriweather', serif;
   color: #262626;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bolder;
   border: 10px solid #262626;
   margin: 0 auto;
   text-align: center;
   width: 155px;
-  height: 155px;
+  height: 135px;
   border-radius: 50%;
   background-color: silver;
   position: relative;
-  top: -280px;
+  top: -250px;
 }
 
 footer {
