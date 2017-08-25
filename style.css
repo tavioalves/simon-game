@@ -10,8 +10,8 @@ button {
   position: relative;
   margin: 0 auto;
   margin-top: 50px;
-  width: 500px;
-  height: 530px;
+  width: 350px;
+  height: 375px;
   border-radius: 50%;
   -webkit-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.6);
   -moz-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.6);
@@ -24,8 +24,8 @@ button {
 }
 
 .pad {
-  width: 250px;
-  height: 250px;
+  width: 175px;
+  height: 175px;
   border: 10px solid #262626;
 }
 
@@ -80,17 +80,17 @@ button {
 .center-pad {
   font-family: 'Merriweather', serif;
   color: #262626;
-  font-size: 25px;
+  font-size: 18px;
   font-weight: bolder;
   border: 10px solid #262626;
   margin: 0 auto;
   text-align: center;
-  width: 225px;
-  height: 225px;
+  width: 155px;
+  height: 155px;
   border-radius: 50%;
   background-color: silver;
   position: relative;
-  top: -390px;
+  top: -280px;
 }
 
 footer {
