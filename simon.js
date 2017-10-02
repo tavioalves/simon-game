@@ -2,6 +2,7 @@ var	sequence = [];
 var chooseSequence = [];
 var simonOn = false;
 var gameStarted = false;
+var alreadyOptions = 0;
 
 $(document).ready(function() {	
 	
@@ -50,11 +51,11 @@ function startGame() {
 
 	gameStarted = true;
 	runningGame();
-	
 }
 
 function chooseOption(value) {
 	if(simonOn && gameStarted) {
+		chooseSequence.push(value);
 		console.log("The button of color", value, "was clicked!");
 	} else {
 		console.log("Please turn on the Simon and start the game!");
@@ -65,12 +66,23 @@ function chooseNextColor() {
 	var colors = ["Yellow", "Blue", "Red", "Green"];
 	var option =  Math.floor((Math.random() * 3) +1);
 	var randomOption = colors[option];
-	
+
+	alreadyOptions += 1;
+
+	if(alreadyOptions < 10){
+		$("#screen-info").text("0"+alreadyOptions);
+	} else {
+		$("#screen-info").text(alreadyOptions);
+	}
 	sequence.push(randomOption);
 }
 
 function runningGame() {
 	chooseNextColor();
 	console.log("Sequence now is: " + sequence);
+}
+
+function checkCorrectAnswer() {
+
 }
 
