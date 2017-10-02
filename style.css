@@ -167,13 +167,17 @@ html {
 }
 
 #led-strict {
-  height: 6px;
-  width: 6px;
+  height: 7px;
+  width: 7px;
   margin: 0 auto;
   margin-top: -16px;
   margin-bottom: 10px;
   background-color: white;
   border-radius: 50%;
+}
+
+.led-on {
+  background-color: #ff4a42 !important;
 }
 
 .button-info {

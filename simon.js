@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	
 	$("#switch-slot").click(function(){
 		var switchValue = $("#switch")[0].className;
 		var countValue = $("#screen-info");
@@ -11,4 +12,15 @@ $(document).ready(function(){
 			countValue.text("");
 		}
 	});
+
+	$("#button-strict").click(function(){
+		var ledStrict = $("#led-strict")[0].className;
+
+		if(ledStrict == "") {
+			$("#led-strict").addClass("led-on");
+		} else {
+			$("#led-strict").removeClass("led-on");
+		}
+	});
+
 });
