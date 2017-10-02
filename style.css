@@ -208,13 +208,28 @@ html {
   border: 2px solid #5476ad;
 }
 
-
 .switch-on {
   left: 20px;
 }
 
+#button-instructions {
+  color: silver;
+  font-family: 'Merriweather', serif;
+  border: none;
+  background-color: #262626;
+  padding: 8.5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+}
+
+.margin-top-32 {
+  margin-top: 32px;
+}
+
 .center {
-  margin: 0 auto;
+  text-align: center;
 }
 
 .left {
@@ -224,7 +239,6 @@ html {
 }
 
 .right {
-
   font-size: 11px;
   margin-top: 10px;
   margin-left: 5px;
@@ -234,7 +248,7 @@ footer {
   font-family: 'Ubuntu', sans-serif;
   font-size: 14px;
   width: 100%;
-  margin-top: 40px;
+  margin-top: 30px;
   margin-bottom: 20px;
   text-align: center;
   color: black;
