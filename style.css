@@ -57,12 +57,20 @@ html {
   border-top-left-radius: 10px;
 }
 
+#yellow.hovered {
+  background-color: #ffe763;
+}
+
 #blue {
   border: none;
   background-color: #4D88FF;
   width: 100%;
   height: 100%;
   border-top-right-radius: 10px;
+}
+
+#blue.hovered {
+  background-color: #709fff;
 }
 
 #red {
@@ -73,12 +81,20 @@ html {
   border-bottom-left-radius: 10px;
 }
 
+#red.hovered {
+  background-color: #e03a3a;
+}
+
 #green {
   border: none;
   background-color: #4c7d4c;
   width: 100%;
   height: 100%;
   border-bottom-right-radius: 10px;
+}
+
+#green.hovered {
+  background-color: #619b61;
 }
 
 .center-pad {

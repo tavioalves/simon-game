@@ -17,6 +17,7 @@ $(document).ready(function() {
 			countValue.text("--");
 		} else {
 			simonOn = false;
+			gameStarted = false;
 			$("#switch").removeClass("switch-on");
 			countValue.text("");
 		}
@@ -48,14 +49,16 @@ $(document).ready(function() {
 function startGame() {
 	sequence = [];
 	chooseSequence = [];
-
+	alreadyOptions = 0;
 	gameStarted = true;
+
 	runningGame();
 }
 
 function chooseOption(value) {
 	if(simonOn && gameStarted) {
 		chooseSequence.push(value);
+		runningGame();
 		console.log("The button of color", value, "was clicked!");
 	} else {
 		console.log("Please turn on the Simon and start the game!");
@@ -74,15 +77,38 @@ function chooseNextColor() {
 	} else {
 		$("#screen-info").text(alreadyOptions);
 	}
+	
 	sequence.push(randomOption);
 }
 
 function runningGame() {
 	chooseNextColor();
-	console.log("Sequence now is: " + sequence);
+	setTimeout(showSequence, 1000);
+}
+
+
+var count = 0;
+
+function showSequence() {
+	setTimeout(function () {
+		var color = sequence[count].toLowerCase();
+		createEffect(color);
+		count++;
+		if(count < sequence.length) {
+			showSequence();
+		}
+	}, 1000)
 }
 
 function checkCorrectAnswer() {
 
 }
 
+function createEffect(element) {
+	$("#"+element).addClass("hovered");
+	setTimeout(removeEffect, 1000);
+}
+
+function removeEffect() {
+	$(".button-option").removeClass("hovered");
+}
