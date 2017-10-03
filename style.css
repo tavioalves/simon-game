@@ -3,11 +3,49 @@ html {
   min-height: 100%;
 }
 
+#user-feedback {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 18px;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 25px;
+  max-width: 350px;
+}
+
+#instructions {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 14px;
+  text-align: center;
+  position: relative;
+  margin: 0 auto; 
+  margin-top: 20px;
+  margin-bottom: -15px;
+  
+  max-width: 350px;
+  height: 75px;
+
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+  border-radius: 10px;
+  background-color: #262626;
+  color: silver;
+  padding: 2.5px;
+
+  display: none;
+}
+
+.info {
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
 
 .simon {
   position: relative;
   margin: 0 auto;
-  margin-top: 75px;
+  margin-top: 15px;
   width: 350px;
   height: 335px;
   border-radius: 20px;

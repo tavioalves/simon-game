@@ -6,6 +6,7 @@ var alreadyOptions = 0;
 var alreadyChosenOptions = 0;
 var count = 0;
 var showingSequence = false;
+var strictMode = false;
 
 var yellowAudio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3');
 var blueAudio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3');
@@ -44,14 +45,35 @@ $(document).ready(function() {
 		if(simonOn){
 			if(ledStrict == "") {
 				$("#led-strict").addClass("led-on");
+				strictMode = true;
 			} else {
+				strictMode = false;
 				$("#led-strict").removeClass("led-on");
 			}
 		} else {
 			console.log("Please start the Simon!");
 		}
 	});
+
+	$("#button-instructions").click(function() {
+		$("#instructions").fadeToggle("slow");
+	});
+
 });
+
+function gameOver() {
+	sequence = [];
+	chosenSequence = [];
+	alreadyOptions = 0;
+	alreadyChosenOptions = 0;
+	count = 0;
+	gameStarted = false;
+	showingSequence = false;
+
+	var countValue = $("#screen-info");
+	$("#switch").addClass("switch-on");
+	countValue.text("--");
+}
 
 function startGame() {
 	sequence = [];
@@ -68,7 +90,7 @@ function startGame() {
 function chooseOption(value) {
 	if(simonOn && gameStarted) {
 		if (showingSequence) {
-			console.log("Please wait the sequence finish to click another option.");
+			$("#user-feedback").text("Please wait the sequence finish to click another option.");
 		} else {
 			value = value.toLowerCase();
 
@@ -82,32 +104,50 @@ function chooseOption(value) {
 				greenAudio.play();
 
 			chosenSequence.push(value);
-			
 			alreadyChosenOptions += 1;
-
 			count = 0;
-
-			console.log("The button of color", value, "was clicked!");
-			console.log("User sequence: ", chosenSequence);
 
 			if(alreadyOptions <= alreadyChosenOptions) {
 				if(checkCorrectAnswer()) {
-					console.log("Congratulations! Go to the next turn!");
-					
-					alreadyChosenOptions = 0;
-					chosenSequence = [];
+					$("#user-feedback").text("Congratulations! Go to the next turn!");
 
-					setTimeout(runningGame, 1000);
+					if(alreadyOptions == 20) {
+						$("#user-feedback").text("Congratulations! You won the game!");
+						gameOver();
+					} else {
+						alreadyChosenOptions = 0;
+						chosenSequence = [];
+						setTimeout(runningGame, 1000);	
+					}
 				} else {
-					console.log("Wrong answer try again");
-					startGame();
+					if(strictMode) {
+						$("#user-feedback").text("Wrong answer! Game over.");
+						gameOver();	
+					} else {
+						alreadyChosenOptions = 0;
+						chosenSequence = [];
+						$("#user-feedback").text("Wrong answer! Showing the right sequence...");
+						setTimeout(showSequence, 2000);
+					}
 				}
 			} else {
-				console.log("Continue the turn...");
+				if(checkCorrectAnswer()) {
+					$("#user-feedback").text("Continue the turn...");
+				} else {
+					if(strictMode) {
+						$("#user-feedback").text("Wrong answer! Game over.");
+						gameOver();	
+					} else {
+						alreadyChosenOptions = 0;
+						chosenSequence = [];
+						$("#user-feedback").text("Wrong answer! Showing the right sequence...");	
+						setTimeout(showSequence, 2000);
+					}
+				}
 			}
 		}
 	} else {
-		console.log("Please turn on the Simon and start the game!");
+		$("#user-feedback").text("Please turn on the Simon and start the game!");
 	}
 }
 
@@ -123,13 +163,11 @@ function chooseNextColor() {
 	} else {
 		$("#screen-info").text(alreadyOptions);
 	}
-	
 	sequence.push(randomOption);
-
-	console.log("Random sequence: ", sequence);
 }
 
 function runningGame() {
+	$("#user-feedback").text("Turn #"+ (alreadyOptions+1));
 	chooseNextColor();
 	showSequence();
 }
@@ -151,11 +189,14 @@ function checkCorrectAnswer() {
 
 	var check = false;
 
-	for(var i = 0; i < sequence.length; i++) {
-		if(sequence[i] == chosenSequence[i])
+	for(var i = 0; i < alreadyChosenOptions; i++) {
+		if(sequence[i] == chosenSequence[i]){
 			check = true;
-		else
-			check = false;
+		} else {
+			return false;
+			console.log("Wrong answer! Try again!");
+			gameOver();
+		}
 	}
 
 	return check;
