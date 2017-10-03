@@ -13,6 +13,8 @@ var blueAudio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3
 var redAudio =  new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3');
 var greenAudio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3');
 
+var audioBuzzer = new Audio('https://s3-us-west-2.amazonaws.com/guylemon/Buzzer.mp3');
+
 $(document).ready(function() {	
 	
 	$("#switch-slot").click(function() {
@@ -70,6 +72,8 @@ function gameOver() {
 	gameStarted = false;
 	showingSequence = false;
 
+	audioBuzzer.play();
+
 	var countValue = $("#screen-info");
 	$("#switch").addClass("switch-on");
 	countValue.text("--");
@@ -126,6 +130,7 @@ function chooseOption(value) {
 					} else {
 						alreadyChosenOptions = 0;
 						chosenSequence = [];
+						audioBuzzer.play();
 						$("#user-feedback").text("Wrong answer! Showing the right sequence...");
 						setTimeout(showSequence, 2000);
 					}
@@ -140,6 +145,7 @@ function chooseOption(value) {
 					} else {
 						alreadyChosenOptions = 0;
 						chosenSequence = [];
+						audioBuzzer.play();
 						$("#user-feedback").text("Wrong answer! Showing the right sequence...");	
 						setTimeout(showSequence, 2000);
 					}
