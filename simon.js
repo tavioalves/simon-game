@@ -1,12 +1,11 @@
 var	sequence = [];
-var chooseSequence = [];
+var chosenSequence = [];
 var simonOn = false;
 var gameStarted = false;
 var alreadyOptions = 0;
+var alreadyChosenOptions = 0;
 var count = 0;
 var showingSequence = false;
-
-// Audio colors
 
 var yellowAudio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3');
 var blueAudio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3');
@@ -56,10 +55,12 @@ $(document).ready(function() {
 
 function startGame() {
 	sequence = [];
-	chooseSequence = [];
+	chosenSequence = [];
 	alreadyOptions = 0;
+	alreadyChosenOptions = 0;
 	count = 0;
 	gameStarted = true;
+	showingSequence = false;
 
 	runningGame();
 }
@@ -68,7 +69,7 @@ function chooseOption(value) {
 	if(simonOn && gameStarted) {
 		if (showingSequence) {
 			console.log("Please wait the sequence finish to click another option.");
-		} else { 	
+		} else {
 			value = value.toLowerCase();
 
 			if(value == 'yellow')
@@ -80,10 +81,30 @@ function chooseOption(value) {
 			if(value == 'green')
 				greenAudio.play();
 
-			chooseSequence.push(value);
+			chosenSequence.push(value);
+			
+			alreadyChosenOptions += 1;
+
 			count = 0;
-			runningGame();
+
 			console.log("The button of color", value, "was clicked!");
+			console.log("User sequence: ", chosenSequence);
+
+			if(alreadyOptions <= alreadyChosenOptions) {
+				if(checkCorrectAnswer()) {
+					console.log("Congratulations! Go to the next turn!");
+					
+					alreadyChosenOptions = 0;
+					chosenSequence = [];
+
+					setTimeout(runningGame, 1000);
+				} else {
+					console.log("Wrong answer try again");
+					startGame();
+				}
+			} else {
+				console.log("Continue the turn...");
+			}
 		}
 	} else {
 		console.log("Please turn on the Simon and start the game!");
@@ -91,7 +112,7 @@ function chooseOption(value) {
 }
 
 function chooseNextColor() {
-	var colors = ["Yellow", "Blue", "Red", "Green"];
+	var colors = ["yellow", "blue", "red", "green"];
 	var option =  Math.floor((Math.random() * 3) +1);
 	var randomOption = colors[option];
 
@@ -104,6 +125,8 @@ function chooseNextColor() {
 	}
 	
 	sequence.push(randomOption);
+
+	console.log("Random sequence: ", sequence);
 }
 
 function runningGame() {
@@ -113,7 +136,7 @@ function runningGame() {
 
 function showSequence() {
 	setTimeout(function () {
-		var color = sequence[count].toLowerCase();
+		var color = sequence[count];
 		createEffect(color);
 		count++;
 		showingSequence = false;
@@ -126,6 +149,16 @@ function showSequence() {
 
 function checkCorrectAnswer() {
 
+	var check = false;
+
+	for(var i = 0; i < sequence.length; i++) {
+		if(sequence[i] == chosenSequence[i])
+			check = true;
+		else
+			check = false;
+	}
+
+	return check;
 }
 
 function createEffect(element) {
