@@ -89,50 +89,50 @@ html {
 
 #yellow {
   border: none;
-  background-color: #f7dc42;
+  background-color: #ffe551;
   width: 100%;
   height: 100%;
   border-top-left-radius: 10px;
 }
 
-#yellow.hovered, #yellow:active {
-  background-color: #ffe763;
+#yellow.hovered, #yellow:active, #yellow:hover {
+  background-color: #fff600;
 }
 
 #blue {
   border: none;
-  background-color: #4D88FF;
+  background-color: #548cff;
   width: 100%;
   height: 100%;
   border-top-right-radius: 10px;
 }
 
-#blue.hovered, #blue:active {
-  background-color: #709fff;
+#blue.hovered, #blue:active, #blue:hover {
+  background-color: #0053ff;
 }
 
 #red {
   border: none;
-  background-color: #cc2222;
+  background-color: #c62929;
   width: 100%;
   height: 100%;
   border-bottom-left-radius: 10px;
 }
 
-#red.hovered, #red:active {
-  background-color: #e03a3a;
+#red.hovered, #red:active, #red:hover {
+  background-color: #ff0000;
 }
 
 #green {
   border: none;
-  background-color: #4c7d4c;
+  background-color: #468446;
   width: 100%;
   height: 100%;
   border-bottom-right-radius: 10px;
 }
 
-#green.hovered, #green:active {
-  background-color: #619b61;
+#green.hovered, #green:active, #green:hover {
+  background-color: #00bf00;
 }
 
 .center-pad {
